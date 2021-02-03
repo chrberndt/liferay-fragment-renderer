@@ -44,6 +44,8 @@ import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Christian Berndt
+ *
+ * After the model of com.liferay.fragment.internal.renderer.ContentObjectFragmentRenderer
  */
 @Component(service = FragmentRenderer.class)
 public class JournalArticleFragmentRenderer implements FragmentRenderer {
@@ -79,6 +81,8 @@ public class JournalArticleFragmentRenderer implements FragmentRenderer {
 		FragmentEntryLink fragmentEntryLink =
 			fragmentRendererContext.getFragmentEntryLink();
 
+		// Obtain id of selected article from the configuration
+
 		long classPK = 0;
 
 		try {
@@ -100,6 +104,8 @@ public class JournalArticleFragmentRenderer implements FragmentRenderer {
 			_log.error(e.getMessage());
 		}
 
+		// Load configured article
+
 		if (classPK > 0) {
 			try {
 				JournalArticle article =
@@ -114,6 +120,8 @@ public class JournalArticleFragmentRenderer implements FragmentRenderer {
 				// instanceId: custom Web-Content node picker
 
 				JSONObject instanceId = JSONFactoryUtil.createJSONObject();
+
+				// Obtain list of teasers from article
 
 				JSONArray validValues = _getInstanceIdConfig(nodes);
 
@@ -196,7 +204,7 @@ public class JournalArticleFragmentRenderer implements FragmentRenderer {
 			String instanceId = freemarkerEntryProcessor.getString(
 				"instanceId");
 
-			System.out.println("instanceId = " + instanceId);
+			// Pass the inststance as a request attribute
 
 			httpServletRequest.setAttribute("instanceId", instanceId);
 		}
@@ -240,8 +248,6 @@ public class JournalArticleFragmentRenderer implements FragmentRenderer {
 
 			return;
 		}
-
-		// System.out.println("displayObject = " + displayObject);
 
 		Tuple tuple = _getTuple(
 			displayObject.getClass(), fragmentRendererContext);
