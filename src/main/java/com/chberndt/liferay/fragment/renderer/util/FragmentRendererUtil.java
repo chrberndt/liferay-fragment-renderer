@@ -32,10 +32,6 @@ public class FragmentRendererUtil {
 	public static List<InfoItemRenderer<?>> getInfoItemRenderers(
 		Class<?> clazz, InfoItemRendererTracker infoItemRendererTracker) {
 
-		//
-		//		System.out.println("getInfoItemRenderers()");
-		//		System.out.println("clazz = " + clazz.getName());
-
 		Class<?>[] interfaces = clazz.getInterfaces();
 
 		if (interfaces.length != 0) {
@@ -51,8 +47,6 @@ public class FragmentRendererUtil {
 		}
 
 		Class<?> superClass = clazz.getSuperclass();
-
-		//		System.out.println("superClass = " + superClass.getName());
 
 		if (superClass != null) {
 			return getInfoItemRenderers(superClass, infoItemRendererTracker);
