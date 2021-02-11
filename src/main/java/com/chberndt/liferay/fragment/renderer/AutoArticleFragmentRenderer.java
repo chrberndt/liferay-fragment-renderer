@@ -69,10 +69,6 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 	public String getConfiguration(
 		FragmentRendererContext fragmentRendererContext) {
 
-		System.out.println(
-			AutoArticleFragmentRenderer.class.getName() +
-				" getConfiguration()");
-
 		FragmentEntryLink fragmentEntryLink =
 			fragmentRendererContext.getFragmentEntryLink();
 
@@ -99,16 +95,10 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 							)
 						)))));
 
-		System.out.println(
-			"fragmentEntryLink.getEditableValues() = " +
-				fragmentEntryLink.getEditableValues());
-
 		JSONObject jsonObject =
 			(JSONObject)_fragmentEntryConfigurationParser.getFieldValue(
 				configurationObject.toString(),
 				fragmentEntryLink.getEditableValues(), "itemSelector");
-
-		System.out.println("jsonObject = " + jsonObject);
 
 		if (jsonObject == null) {
 
@@ -243,9 +233,6 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 			HttpServletResponse httpServletResponse)
 		throws IOException {
 
-		//		System.out.println(
-		//			IntroArticleFragmentRenderer.class.getName() + " render()");
-
 		JSONObject jsonObject = _getFieldValueJSONObject(
 			fragmentRendererContext);
 
@@ -342,8 +329,6 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 		sb.append("\t</dynamic-element>\n");
 		sb.append("</root>");
 
-		System.out.println(sb.toString());
-
 		return sb.toString();
 	}
 
@@ -378,13 +363,6 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 	private JSONObject _getFieldValueJSONObject(
 		FragmentRendererContext fragmentRendererContext) {
 
-		//		System.out.println(
-		//			IntroArticleFragmentRenderer.class.getName() +
-		//				" _getFieldValueJSONObject()");
-		//
-		//		System.out.println(
-		//			"fragmentRendererContext = " + fragmentRendererContext);
-
 		FragmentEntryLink fragmentEntryLink =
 			fragmentRendererContext.getFragmentEntryLink();
 
@@ -401,10 +379,6 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 			FragmentRendererUtil.getInfoItemRenderers(
 				displayObjectClass, _infoItemRendererTracker);
 
-		//		for (InfoItemRenderer infoItemRenderer : infoItemRenderers) {
-		//			System.out.println("infoItemRenderer = " + infoItemRenderer);
-		//		}
-
 		if (infoItemRenderers == null) {
 			return null;
 		}
@@ -415,30 +389,18 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 		JSONObject jsonObject = _getFieldValueJSONObject(
 			fragmentRendererContext);
 
-		//		System.out.println("jsonObject = " + jsonObject);
-
 		if (jsonObject == null) {
-			//			System.out.println(
-			//				"defaultInfoItemRenderer 1 = " + defaultInfoItemRenderer);
-
 			return new Tuple(defaultInfoItemRenderer);
 		}
 
 		JSONObject templateJSONObject = jsonObject.getJSONObject("template");
 
-		//		System.out.println("templateJSONObject = " + templateJSONObject);
-
 		if (templateJSONObject == null) {
-			//			System.out.println(
-			//				"defaultInfoItemRenderer 2 = " + defaultInfoItemRenderer);
-
 			return new Tuple(defaultInfoItemRenderer);
 		}
 
 		String infoItemRendererKey = templateJSONObject.getString(
 			"infoItemRendererKey");
-
-		//		System.out.println("infoItemRendererKey = " + infoItemRendererKey);
 
 		InfoItemRenderer<Object> infoItemRenderer =
 			(InfoItemRenderer<Object>)
@@ -446,8 +408,6 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 					infoItemRendererKey);
 
 		if (infoItemRenderer != null) {
-			//			System.out.println("infoItemRenderer = " + infoItemRenderer);
-
 			return new Tuple(
 				infoItemRenderer, templateJSONObject.getString("templateKey"));
 		}
