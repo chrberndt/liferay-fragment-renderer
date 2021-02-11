@@ -105,9 +105,6 @@ public class AutoArticleFragmentRenderer implements FragmentRenderer {
 			// If no article has been configured yet, create an new Intro / Teaser Article
 			// and pass it's configuration parameters ("classPK") to the configuration object
 
-			System.out.println(
-				"fragmentEntryLink.getPlid() = " + fragmentEntryLink.getPlid());
-
 			try {
 
 				// Obtain the current Layout's uuid
