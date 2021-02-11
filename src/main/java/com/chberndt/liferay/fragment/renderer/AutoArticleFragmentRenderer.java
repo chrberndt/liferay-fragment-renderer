@@ -58,7 +58,7 @@ import org.osgi.service.component.annotations.Reference;
  * After the model of com.liferay.fragment.internal.renderer.ContentObjectFragmentRenderer
  */
 @Component(service = FragmentRenderer.class)
-public class IntroArticleFragmentRenderer implements FragmentRenderer {
+public class AutoArticleFragmentRenderer implements FragmentRenderer {
 
 	@Override
 	public String getCollectionKey() {
@@ -70,7 +70,7 @@ public class IntroArticleFragmentRenderer implements FragmentRenderer {
 		FragmentRendererContext fragmentRendererContext) {
 
 		System.out.println(
-			IntroArticleFragmentRenderer.class.getName() +
+			AutoArticleFragmentRenderer.class.getName() +
 				" getConfiguration()");
 
 		FragmentEntryLink fragmentEntryLink =
@@ -233,7 +233,7 @@ public class IntroArticleFragmentRenderer implements FragmentRenderer {
 		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle(
 			"content.Language", getClass());
 
-		return LanguageUtil.get(resourceBundle, "intro-display");
+		return LanguageUtil.get(resourceBundle, "auto-article-display");
 	}
 
 	@Override
@@ -456,7 +456,7 @@ public class IntroArticleFragmentRenderer implements FragmentRenderer {
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
-		IntroArticleFragmentRenderer.class.getName());
+		AutoArticleFragmentRenderer.class.getName());
 
 	@Reference
 	private CompanyLocalService _companyLocalService;

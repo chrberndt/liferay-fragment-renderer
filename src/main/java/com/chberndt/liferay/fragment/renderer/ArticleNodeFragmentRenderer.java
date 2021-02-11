@@ -48,7 +48,7 @@ import org.osgi.service.component.annotations.Reference;
  * After the model of com.liferay.fragment.internal.renderer.ContentObjectFragmentRenderer
  */
 @Component(service = FragmentRenderer.class)
-public class JournalArticleFragmentRenderer implements FragmentRenderer {
+public class ArticleNodeFragmentRenderer implements FragmentRenderer {
 
 	@Override
 	public String getCollectionKey() {
@@ -174,7 +174,7 @@ public class JournalArticleFragmentRenderer implements FragmentRenderer {
 		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle(
 			"content.Language", getClass());
 
-		return LanguageUtil.get(resourceBundle, "custom-display");
+		return LanguageUtil.get(resourceBundle, "article-node-display");
 	}
 
 	@Override
@@ -390,7 +390,7 @@ public class JournalArticleFragmentRenderer implements FragmentRenderer {
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
-		JournalArticleFragmentRenderer.class.getName());
+		ArticleNodeFragmentRenderer.class.getName());
 
 	@Reference
 	private FragmentEntryConfigurationParser _fragmentEntryConfigurationParser;
